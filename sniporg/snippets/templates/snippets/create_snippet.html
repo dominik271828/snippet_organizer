@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Add Title</label>
+        <input type="text" name="title"><br>
+        <label for="code">Add Code</label>
+        <input type="text" name="data"><br>
+        <input type="submit" value="Add Snippet">
+     <label for="lang">Choose a language:</label>
+     <select id="lang" name="lang">
+       <option value="C">C</option>
+       <option value="CPP">C++</option>
+     </select>
+       </form>
+    <a href="{% url 'snippets:dashboard' %}">dashboard</a>
+    
+</body>
+</html>

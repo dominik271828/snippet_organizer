@@ -1,0 +1,7 @@
+alias dcsu='python3 manage.py createsuperuser'
+alias dm='python3 manage.py'
+alias dmmm='python3 manage.py makemigrations && python3 manage.py migrate'
+alias drs='python3 manage.py runserver'
+alias dsa='python3 manage.py startapp'
+alias dsh='python3 manage.py shell'
+alias dt='python3 manage.py test'
