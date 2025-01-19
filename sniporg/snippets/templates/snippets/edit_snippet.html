@@ -1,0 +1,16 @@
+{% extends "snippets/base.html" %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <label for="id">Snippet ID:</label>
+    <input type="text" name="id" value="{{snip.id}}" readonly>
+    <label for="title">Edit Title</label>
+    <input type="text" name="title" value="{{snip.title}}"><br>
+    <label for="code">Edit Code</label>
+    <textarea name="data", rows="4", cols="50">{{snip.data}}</textarea>
+    <input type="submit" value="Edit Snippet">
+</form>
+<div style="padding: 5px">
+<a href="{% url 'snippets:dashboard' %}">Dashboard</a>
+</div>
+{% endblock content %}

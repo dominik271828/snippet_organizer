@@ -1,8 +1,7 @@
 from pygments import highlight
-from pygments.lexers import CLexer
+from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
-def formatC(code):
+def formatCode(code, lexerAlias):
     formatter = HtmlFormatter(style='sas', full=True)
-    #print(formatter.get_style_defs())
-    return highlight(code, CLexer(), formatter)
+    return highlight(code, get_lexer_by_name(lexerAlias), formatter)

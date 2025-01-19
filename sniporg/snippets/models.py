@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Lang(models.Model):
     name = models.CharField(max_length=100)
+    lexer_name = models.CharField(max_length=100)
+
     def __str__(self):
         return f"Lang: {self.name}"
 

@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "snippets/base.html" %}
+{% block content %}
     <form method="post">
         {% csrf_token %}
         <label for="title">Add Title</label>
         <input type="text" name="title"><br>
         <label for="code">Add Code</label>
-        <input type="text" name="data"><br>
+        <textarea name="data", rows="4", cols="50">Input your code here.</textarea>
         <input type="submit" value="Add Snippet">
      <label for="lang">Choose a language:</label>
      <select id="lang" name="lang">
-       <option value="C">C</option>
-       <option value="CPP">C++</option>
+       {% for lang in langs %}
+       <option name={{lang.name}} value="{{lang.name}}">{{lang.name}}</option>
+       {% endfor %}
      </select>
        </form>
-    <a href="{% url 'snippets:dashboard' %}">dashboard</a>
-    
-</body>
-</html>
+    <div style="padding: 5px">
+    <a href="{% url 'snippets:dashboard' %}">Dashboard</a>
+    </div>
+{% endblock content %}

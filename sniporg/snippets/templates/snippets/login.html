@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "snippets/base.html" %}
+{% block content %}
+    <div class="form-container">
     <form action="{% url 'snippets:login' %}" method="post">
         {% csrf_token %}
-        <legend>Enter your credentials:</legend>
+        <legend class="lato-bold">Enter credentials:</legend>
+
         <label for="username">Username</label>
         <input name="username" type="text" id="username"><br>
+
         <label for="password">Password</label>
         <input name="password" type="password" id="password"><br>
+
         <input type="submit" value="Login">
     </form>
+    </div>
     {% if message %}
+    <hr>
     {{message}}
+    <hr>
     {% endif %}
-    Dont have an account yet?<br>
+    Don't have an account yet?<br>
     <form action="{% url 'snippets:register' %}">
         <input type="submit" value="Register">
     </form>
-</body>
-</html>
+{% endblock content %}

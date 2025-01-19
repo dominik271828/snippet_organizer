@@ -1,0 +1,105 @@
+body {
+    background-color: #FBFBFB;
+}
+/*
+#FBFBFB
+#E8F9FF
+#C4D9FF
+#C5BAFF
+*/
+.baseContent {
+    background-color: #E8F9FF;
+}
+.baseHeader {
+    background-color: #C4D9FF;
+    padding: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 20%;
+}
+input[type="submit"] {
+  width: 100px;
+}
+.snippetListElement {
+  background-color: #C5BAFF;
+  padding: 20px;
+}
+label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+.codeDiv {
+  background-color: #C4D9FF;
+  padding: 20px;
+}
+.snippetForm {
+
+  display: inline;
+  float: right; 
+}
+.lato-thin {
+  font-family: "Lato", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-light {
+  font-family: "Lato", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-black {
+  font-family: "Lato", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.lato-thin-italic {
+  font-family: "Lato", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.lato-light-italic {
+  font-family: "Lato", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.lato-regular-italic {
+  font-family: "Lato", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.lato-bold-italic {
+  font-family: "Lato", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.lato-black-italic {
+  font-family: "Lato", serif;
+  font-weight: 900;
+  font-style: italic;
+}

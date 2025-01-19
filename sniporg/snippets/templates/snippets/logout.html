@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    logged out succesfully, redirecting to homepage...<br>
-    <a href="{% url 'snippets:index' %}">home</a>
+{% extends "snippets/base.html" %}
+{% block content %}
+    <h3>Logged out succesfully, redirecting to homepage...</h3><br>
+    <a href="{% url 'snippets:index' %}">Home</a><br><br>
     <script>
         function redirect() {
             window.location.replace("{% url 'snippets:index' %}")
         }
         setTimeout(redirect, 2000)
     </script>
-</body>
-</html>
+{%endblock content %}

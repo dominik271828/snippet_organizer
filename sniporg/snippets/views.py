@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Snippet, Lang
 from django.utils import timezone
-from .pygmentsutils import formatC
+from .pygmentsutils import formatCode
 
 def index(request):
     return redirect("snippets:login")
@@ -19,7 +19,6 @@ def login(request):
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
-        print(username, password)
         if user is not None:
             django_login(request, user)
             return redirect("snippets:dashboard")
@@ -59,27 +58,41 @@ def dashboard(request):
 @login_required
 def create_snippet(request):
     if request.method == "POST":
-        print(request.POST)
         s = Snippet(title=request.POST["title"], data=request.POST["data"], 
                     lang=Lang.objects.get(name=request.POST["lang"]), pub_date=timezone.now(), owner=request.user)
         s.save()
-    return render(request, "snippets/create_snippet.html")
+    # fetch languages from database
+    langs = Lang.objects.all()
+    return render(request, "snippets/create_snippet.html", context={"langs":langs})
 
 @login_required
 def delete_snippet(request):
     if request.method == "POST":
+        print(request.user.username)
+        #if request.user.username == 'john':
+        #    return redirect("snippets:dashboard")
         delete_id = list(request.POST.keys())[1]
-        # TODO: Verify the snippet actually belongs to the user
-        Snippet.objects.get(pk=delete_id).delete()
+        snip = Snippet.objects.get(pk=delete_id) 
+        if (request.user == snip.owner):
+            snip.delete()
     return redirect("snippets:dashboard")
 
 @login_required
 def edit_snippet(request):
-    return render(request, "snippets/edit_snippet.html")
+    if "title" in request.POST.keys():
+        print(dict(request.POST))
+        snip = Snippet.objects.get(pk=request.POST["id"])
+        snip.title = request.POST["title"]
+        snip.data = request.POST["data"]
+        snip.save()
+        return redirect("snippets:dashboard")
+    id = list(request.POST.keys())[1]
+    snip = Snippet.objects.get(pk=id)
+    return render(request, "snippets/edit_snippet.html", context={"snip": snip})
 
 @login_required
 def view_snippet(request):
     id = list(request.POST.keys())[1]
     snip = Snippet.objects.get(pk=id)
-    context ={ "snippet": snip, "code": formatC(snip.data)}
+    context ={ "snippet": snip, "code": formatCode(code=snip.data, lexerAlias=snip.lang.lexer_name)}
     return render(request, "snippets/view_snippet.html", context)

@@ -1,34 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "snippets/base.html" %}
+{% block content %}
     {% for s in snippets %}
-    <div style="background-color:pink" >
-    {{s.title}}
-    <form action="{% url 'snippets:delete_snippet' %}" onclick="return confirm('Are you sure you want to delete?');" method="post">
+    <div class="snippetListElement" >
+    <span class="lato-bold">{{s.title}}</span>
+    <form class="snippetForm" action="{% url 'snippets:delete_snippet' %}" onclick="return confirm('Are you sure you want to delete?');" method="post">
         {% csrf_token %}
         <input type="submit" value="Delete" name="{{s.id}}" />
     </form>
-    <form action="{% url 'snippets:edit_snippet' %}" method="post">
+    <form class="snippetForm" action="{% url 'snippets:edit_snippet' %}" method="post">
         {% csrf_token %}
         <input type="submit" value="Edit" name="{{s.id}}" />
     </form>
-    <form action="{% url 'snippets:view_snippet' %}" method="post">
+    <form class="snippetForm" action="{% url 'snippets:view_snippet' %}" method="post">
         {% csrf_token %}
         <input type="submit" value="View" name="{{s.id}}" />
     </form>
     </div>
     {% endfor %}
-    <hr>
-    <form action="{% url 'snippets:logout' %}">
+    <div style="padding: 10px">
+    <form style="display:inline" action="{% url 'snippets:logout' %}">
         <input type="submit" value="Logout" />
     </form>
-    <form action="{% url 'snippets:create_snippet' %}">
-        <input type="submit" value="Create a new snippet" />
+    <form style="display:inline" action="{% url 'snippets:create_snippet' %}">
+        <input type="submit" style="width:200px;" value="Create a new snippet" />
     </form>
-</body>
-</html>
+    </div>
+{%endblock content %}
