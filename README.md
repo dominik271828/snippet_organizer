@@ -1,5 +1,3 @@
-Here’s the updated version of your project documentation with appropriate code block syntax highlighting for the programming languages where applicable:
-
 # Snippet Organizer
 
 Small project built with Django, which allows for managing code snippets in different languages.
