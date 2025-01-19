@@ -22,8 +22,7 @@ Make sure you have the following installed:
 Follow these steps to set up the project locally:
 
 ### 1. Clone the repository
-`
-git clone https://github.com/yourusername/django-project.git
+`git clone https://github.com/yourusername/django-project.git
 cd django-project` 
 
 ### 2. Set up a virtual environment (recommended)
@@ -31,9 +30,10 @@ cd django-project`
 Create and activate a virtual environment:
 
 #### On macOS/Linux:
-
-```python3 -m venv venv
-source venv/bin/activate```
+```
+python3 -m venv venv
+source venv/bin/activate
+```
 
 #### On Windows:
 
