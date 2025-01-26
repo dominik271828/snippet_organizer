@@ -1,28 +1,21 @@
 {% extends "snippets/base.html" %}
 {% block content %}
-    {% for s in snippets %}
+    {% for s in snippet_list%}
     <div class="snippetListElement" >
     <span class="lato-bold">{{s.title}}</span>
     <form class="snippetForm" action="{% url 'snippets:delete_snippet' %}" onclick="return confirm('Are you sure you want to delete?');" method="post">
         {% csrf_token %}
         <input type="submit" value="Delete" name="{{s.id}}" />
     </form>
-    <form class="snippetForm" action="{% url 'snippets:edit_snippet' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Edit" name="{{s.id}}" />
-    </form>
-    <form class="snippetForm" action="{% url 'snippets:view_snippet' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="View" name="{{s.id}}" />
-    </form>
+    <a href="{% url 'snippets:view' pk=s.id %}">View</a>
+    <a href="{% url 'snippets:edit' pk=s.id %}">Edit</a>
     </div>
     {% endfor %}
     <div style="padding: 10px">
-    <form style="display:inline" action="{% url 'snippets:logout' %}">
+    <form method="POST" style="display:inline" action="{% url 'snippets:logout' %}">
+        {% csrf_token %}
         <input type="submit" value="Logout" />
     </form>
-    <form style="display:inline" action="{% url 'snippets:create_snippet' %}">
-        <input type="submit" style="width:200px;" value="Create a new snippet" />
-    </form>
+    <a href="{% url 'snippets:create' %}">Create</a>
     </div>
 {%endblock content %}

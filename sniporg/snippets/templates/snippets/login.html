@@ -4,13 +4,7 @@
     <form action="{% url 'snippets:login' %}" method="post">
         {% csrf_token %}
         <legend class="lato-bold">Enter credentials:</legend>
-
-        <label for="username">Username</label>
-        <input name="username" type="text" id="username"><br>
-
-        <label for="password">Password</label>
-        <input name="password" type="password" id="password"><br>
-
+        {{form}}
         <input type="submit" value="Login">
     </form>
     </div>

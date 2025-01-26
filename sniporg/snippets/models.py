@@ -7,10 +7,9 @@ class Lang(models.Model):
     lexer_name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"Lang: {self.name}"
+        return f"{self.name}"
 
 class Snippet(models.Model):
-    # TODO: maybe getenv?
     title = models.CharField(max_length=100)
     data = models.CharField(max_length=1000)
     lang = models.ForeignKey(Lang, on_delete=models.CASCADE)

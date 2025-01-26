@@ -1,10 +1,11 @@
 {% extends "snippets/base.html" %}
 {% block content %}
-<h3>{{snippet.title}}</h3>
-<div class="codeDiv">
-{{formattedCode |safe}}
-</div>
-<div style="padding: 10px">
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+<div style="padding: 5px">
 <a href="{% url 'snippets:dashboard' %}">Dashboard</a>
 </div>
 {% endblock content %}
