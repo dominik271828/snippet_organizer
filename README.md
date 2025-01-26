@@ -6,7 +6,7 @@ Small project built with Django, which allows for managing code snippets in diff
 
 - User authentication
 - Creating, Updating, Deleting and Viewing code snippets
-- Syntax highlighting
+- Syntax highlighting (Using [Pygments](https://pygments.org/))
 - Multiple programming languages support
 
 ## Prerequisites
