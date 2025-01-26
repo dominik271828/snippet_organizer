@@ -23,8 +23,8 @@ Follow these steps to set up the project locally:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/dominik271828/django-project.git
-cd django-project
+git clone https://github.com/dominik271828/snippet_organizer.git
+cd  snippet_organizer
 ``` 
 
 ### 2. Set up a virtual environment (recommended)
